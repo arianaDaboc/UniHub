@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UniHub Technical Documentation</title>
+<style>
+@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:#dfe4e2;color:#13232a;font-family:"Segoe UI",Arial,sans-serif;font-size:10.4pt;line-height:1.38}.page{position:relative;width:210mm;height:297mm;margin:8mm auto;background:#fff;padding:15mm 17mm 14mm;page-break-after:always;overflow:hidden}.page:last-child{page-break-after:auto}.topline{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #cfd9d5;padding-bottom:4mm;margin-bottom:7mm}.brand{font-size:11pt;font-weight:750;color:#0b6a52}.section-no{font-size:8.5pt;color:#617078;text-transform:uppercase;letter-spacing:.08em}h1{font-size:31pt;line-height:1.08;margin:0 0 5mm;letter-spacing:0}h2{font-size:20pt;line-height:1.15;margin:0 0 4mm}h3{font-size:12.5pt;margin:4mm 0 2mm}p{margin:0 0 3mm;color:#3f5058}strong{color:#13232a}ul{margin:1.5mm 0 3mm;padding-left:5mm}li{margin:1.2mm 0;color:#35474f}.lead{font-size:13pt;line-height:1.48;max-width:155mm}.eyebrow{font-size:9pt;text-transform:uppercase;color:#0b6a52;font-weight:750;margin-bottom:3mm}.callout{border-left:3px solid #0b6a52;background:#eef6f3;padding:4mm 5mm;margin:5mm 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}.panel{border:1px solid #d5dedb;padding:4mm;border-radius:2mm}.panel h3{margin-top:0}.metric{font-size:20pt;font-weight:750;color:#0b6a52}.small{font-size:8.7pt;color:#617078}.diagram{border:1px solid #cad6d2;background:#f8faf9;padding:5mm;margin:4mm 0}.flow{display:flex;align-items:stretch;justify-content:space-between;gap:2mm}.node{flex:1;border:1px solid #9eb4ad;background:#fff;text-align:center;padding:3.5mm 2mm;font-weight:700;border-radius:1.5mm}.node small{display:block;font-weight:400;color:#617078;margin-top:1mm}.arrow{align-self:center;color:#0b6a52;font-size:16pt}.stack{display:grid;grid-template-columns:38mm 1fr;border:1px solid #d2dcda}.stack div{padding:2.5mm 3mm;border-bottom:1px solid #d2dcda}.stack div:nth-last-child(-n+2){border-bottom:0}.stack .label{background:#f1f5f3;font-weight:700;color:#0b6a52}table{width:100%;border-collapse:collapse;margin:3mm 0;font-size:8.8pt}th{background:#183039;color:#fff;text-align:left;padding:2.5mm}td{border:1px solid #d5ddda;padding:2.2mm;vertical-align:top}tr:nth-child(even) td{background:#f7f9f8}.tag{display:inline-block;padding:1mm 2mm;border-radius:1mm;background:#e3f0ec;color:#075c47;font-size:8pt;font-weight:700}.entity-map{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}.entity{border-top:3px solid #0b6a52;background:#f4f7f6;padding:3mm;min-height:26mm}.entity b{display:block;margin-bottom:1mm}.journey{display:grid;grid-template-columns:9mm 1fr;gap:2mm 3mm;margin:4mm 0}.step{width:8mm;height:8mm;border-radius:50%;display:grid;place-items:center;background:#0b6a52;color:#fff;font-weight:700}.journey p{padding-top:1mm}.role-head{display:flex;align-items:center;gap:4mm;margin-bottom:5mm}.role-icon{width:14mm;height:14mm;display:grid;place-items:center;background:#0b6a52;color:#fff;border-radius:2mm;font-size:16pt}.code{font-family:Consolas,monospace;font-size:8.5pt;background:#17272d;color:#e9f3f0;padding:3mm 4mm;border-radius:1.5mm;white-space:pre-wrap}.footer{position:absolute;left:17mm;right:17mm;bottom:7mm;display:flex;justify-content:space-between;border-top:1px solid #d5dedb;padding-top:2mm;font-size:8pt;color:#78858a}.check{color:#0b6a52;font-weight:750}.warn{color:#985b12;font-weight:750}@media print{body{background:#fff}.page{margin:0}}
+</style>
+</head>
+<body>
+
+<section class="page">
+  <div class="topline"><span class="brand">UniHub</span><span class="section-no">Technical Documentation / 2026</span></div>
+  <p class="eyebrow">Academic workspace platform</p>
+  <h1>One system for courses,<br>deadlines and academic work.</h1>
+  <p class="lead">UniHub is a full-stack web application that centralises information normally scattered across learning platforms, email, PDF files and messaging groups. It provides separate, authorised workflows for students, professors and administrators.</p>
+  <div class="callout"><strong>Project objective.</strong> Demonstrate production-oriented full-stack fundamentals: relational modelling, REST API design, JWT authentication, role-based authorisation, file handling, scheduling, database migrations and a typed React user interface.</div>
+  <h3>System architecture</h3>
+  <div class="diagram">
+    <div class="flow">
+      <div class="node">React UI<small>TypeScript + Vite</small></div><div class="arrow">&#8594;</div>
+      <div class="node">REST Controllers<small>JSON / multipart / ICS</small></div><div class="arrow">&#8594;</div>
+      <div class="node">Service Layer<small>Rules and authorisation</small></div><div class="arrow">&#8594;</div>
+      <div class="node">Repositories<small>Spring Data JPA</small></div><div class="arrow">&#8594;</div>
+      <div class="node">PostgreSQL<small>Flyway-managed schema</small></div>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="panel"><div class="metric">3</div><strong>authorised roles</strong><p class="small">Student, Professor and Administrator.</p></div>
+    <div class="panel"><div class="metric">16</div><strong>seeded assignments</strong><p class="small">Realistic deadlines, descriptions and points.</p></div>
+    <div class="panel"><div class="metric">11</div><strong>automated tests</strong><p class="small">Service, security and repository coverage.</p></div>
+  </div>
+  <h3>Core capabilities</h3>
+  <div class="grid2">
+    <ul><li>Institutional-email registration and BCrypt password storage</li><li>Course catalogue, search, filters and enrolment</li><li>Assignments, completion progress and priority classification</li><li>PDF material upload and authenticated download</li></ul>
+    <ul><li>Weekly teaching/student schedules and ICS export</li><li>Prerequisites, reviews and course recommendations</li><li>In-app notifications and scheduled email reminders</li><li>Professor ownership checks and administrator controls</li></ul>
+  </div>
+  <div class="footer"><span>UniHub full-stack project</span><span>1 / 6</span></div>
+</section>
+
+<section class="page">
+  <div class="topline"><span class="brand">UniHub</span><span class="section-no">Architecture and Technologies</span></div>
+  <h2>Technology stack and request lifecycle</h2>
+  <div class="stack">
+    <div class="label">Frontend</div><div><strong>React 18 + TypeScript 5 + Vite 6.</strong> Component state, typed API contracts, responsive layouts and Lucide icons. The browser stores the signed session token and sends it in the Authorization header.</div>
+    <div class="label">API</div><div><strong>Java 17 + Spring Boot 3.3.</strong> Spring MVC exposes REST endpoints; Jakarta Validation rejects malformed requests before business logic runs.</div>
+    <div class="label">Security</div><div><strong>Spring Security + JWT + BCrypt.</strong> Stateless authentication, role authorities, token expiry and endpoint/service ownership checks.</div>
+    <div class="label">Persistence</div><div><strong>PostgreSQL + Spring Data JPA + Hibernate.</strong> Entity relationships map to explicit foreign keys and uniqueness constraints.</div>
+    <div class="label">Delivery</div><div><strong>Flyway + Maven + JUnit 5 + Mockito + H2.</strong> Repeatable schema evolution and automated backend verification.</div>
+    <div class="label">Email</div><div><strong>Spring Mail + scheduled jobs + Mailpit.</strong> Local SMTP capture for development; configurable SMTP for production delivery.</div>
+  </div>
+  <h3>Authenticated GET request</h3>
+  <div class="journey">
+    <div class="step">1</div><p><strong>React calls the API.</strong> The typed wrapper builds a URL such as <code>/api/courses</code> and attaches <code>Authorization: Bearer &lt;JWT&gt;</code>.</p>
+    <div class="step">2</div><p><strong>JwtAuthenticationFilter validates identity.</strong> It extracts the email subject, loads current authorities and populates Spring's security context.</p>
+    <div class="step">3</div><p><strong>The controller maps HTTP to an application operation.</strong> DTOs define input/output boundaries; JPA entities are not exposed directly.</p>
+    <div class="step">4</div><p><strong>The service executes rules.</strong> It verifies role, course ownership, enrolment, capacity, prerequisites or review eligibility as required.</p>
+    <div class="step">5</div><p><strong>The repository issues SQL.</strong> Hibernate maps records to entities inside a transaction and the response is serialised as JSON.</p>
+    <div class="step">6</div><p><strong>React updates state.</strong> Loading, success, empty and error states are rendered without a full page reload.</p>
+  </div>
+  <h3>Security behaviour</h3>
+  <div class="grid2"><div class="panel"><span class="tag">401 UNAUTHORISED</span><p>Missing or expired token. The frontend clears the stale session and returns to sign-in.</p></div><div class="panel"><span class="tag">403 FORBIDDEN</span><p>Identity is valid, but the role or ownership rule does not permit the requested action.</p></div></div>
+  <div class="footer"><span>Controller &#8594; Service &#8594; Repository</span><span>2 / 6</span></div>
+</section>
+
+<section class="page">
+  <div class="topline"><span class="brand">UniHub</span><span class="section-no">Relational Data Model</span></div>
+  <h2>PostgreSQL schema and domain relationships</h2>
+  <p>The schema is managed by ten ordered Flyway migrations. Hibernate uses <code>ddl-auto: validate</code>, so application startup confirms that Java mappings match the database rather than silently altering production data.</p>
+  <div class="entity-map">
+    <div class="entity"><b>users</b><span class="small">Identity, institutional email, BCrypt password, role</span></div>
+    <div class="entity"><b>courses</b><span class="small">Professor FK, ECTS, faculty, department, capacity</span></div>
+    <div class="entity"><b>enrollments</b><span class="small">Student FK + course FK + enrolled timestamp</span></div>
+    <div class="entity"><b>assignments</b><span class="small">Course FK, deadline, points and description</span></div>
+    <div class="entity"><b>assignment_completions</b><span class="small">Per-student completion state and timestamp</span></div>
+    <div class="entity"><b>materials</b><span class="small">PDF metadata and generated storage filename</span></div>
+    <div class="entity"><b>course_schedules</b><span class="small">Weekday, start/end time and room</span></div>
+    <div class="entity"><b>course_prerequisites</b><span class="small">Self-referencing many-to-many course relation</span></div>
+    <div class="entity"><b>course_reviews</b><span class="small">Student/course uniqueness, rating and comment</span></div>
+    <div class="entity"><b>notifications</b><span class="small">User, type, reference key, read state</span></div>
+    <div class="entity"><b>email_reminders</b><span class="small">Assignment/user uniqueness prevents duplicates</span></div>
+  </div>
+  <h3>Relationship diagram</h3>
+  <div class="diagram">
+    <div class="flow"><div class="node">Professor<br><small>users</small></div><div class="arrow">1 &#8594; N</div><div class="node">Course</div><div class="arrow">1 &#8594; N</div><div class="node">Assignment</div></div>
+    <div style="height:4mm"></div>
+    <div class="flow"><div class="node">Student<br><small>users</small></div><div class="arrow">1 &#8594; N</div><div class="node">Enrollment<small>join entity</small></div><div class="arrow">N &#8594; 1</div><div class="node">Course</div></div>
+    <div style="height:4mm"></div>
+    <div class="flow"><div class="node">Student</div><div class="arrow">1 &#8594; N</div><div class="node">Completion</div><div class="arrow">N &#8594; 1</div><div class="node">Assignment</div></div>
+  </div>
+  <h3>Integrity rules</h3>
+  <table><tr><th>Constraint</th><th>Purpose</th></tr><tr><td>Unique student + course enrolment</td><td>Prevents a student from enrolling twice in the same course.</td></tr><tr><td>Unique student + assignment completion</td><td>Represents completion as a stable state rather than duplicate events.</td></tr><tr><td>Unique user + notification reference</td><td>Prevents repeated material/deadline notifications.</td></tr><tr><td>Unique user + assignment email reminder</td><td>Ensures scheduled jobs do not resend the same deadline email.</td></tr><tr><td>Foreign keys with cascade rules</td><td>Course deletion removes dependent records and avoids database orphans.</td></tr></table>
+  <div class="footer"><span>Relational design with explicit join entities</span><span>3 / 6</span></div>
+</section>
+
+<section class="page">
+  <div class="topline"><span class="brand">UniHub</span><span class="section-no">Student Experience</span></div>
+  <div class="role-head"><div class="role-icon">S</div><div><h2 style="margin:0">Student role</h2><p style="margin:0">Discovery, planning, progress and academic resources</p></div></div>
+  <div class="grid2">
+    <div><h3>Account and course discovery</h3><ul><li>Registration accepts university-provided addresses while blocking common personal providers.</li><li>The catalogue supports live search by course, professor or department, plus department filters and sorting.</li><li>Enrolment checks capacity, duplicate membership and required prerequisite courses.</li><li>Course detail exposes professor, ECTS, schedule, materials, assignments and reviews.</li></ul></div>
+    <div><h3>Daily academic workflow</h3><ul><li>The dashboard aggregates enrolled courses and upcoming deadlines.</li><li>Students mark assignments complete or undo completion.</li><li>Progress is calculated as completed assignments divided by total assignments for each course.</li><li>The weekly schedule displays only courses in which the student is enrolled.</li></ul></div>
+  </div>
+  <h3>Deadline Intelligence</h3>
+  <table><tr><th>Priority</th><th>Rule</th><th>Student meaning</th></tr><tr><td><span class="tag">URGENT</span></td><td>Less than 24 hours remaining</td><td>Immediate attention is required.</td></tr><tr><td><span class="tag">SOON</span></td><td>Between 24 and 72 hours</td><td>Plan work during the next study session.</td></tr><tr><td><span class="tag">OK</span></td><td>More than 72 hours</td><td>Visible in the plan but not yet critical.</td></tr></table>
+  <h3>Materials, calendar and communication</h3>
+  <div class="grid3">
+    <div class="panel"><strong>Materials</strong><p>Authenticated PDF download preserves the original filename while files are stored under generated safe names.</p></div>
+    <div class="panel"><strong>Calendar</strong><p>Assignments are exported as an <code>.ics</code> file that can be imported into Outlook, Google Calendar or another calendar application.</p></div>
+    <div class="panel"><strong>Notifications</strong><p>New assignments, course materials and approaching deadlines create deduplicated in-app updates.</p></div>
+  </div>
+  <h3>Reviews and recommendations</h3>
+  <p>Reviews require an eligible enrolment period and are unique per student/course. Recommendations use a SQL co-enrolment query: courses frequently taken by students with similar enrolments are ranked without introducing unnecessary machine learning infrastructure.</p>
+  <div class="callout"><strong>Student boundary:</strong> students cannot create courses, upload materials, publish schedules, create assignments, inspect another course's student list or change account roles.</div>
+  <div class="footer"><span>Role: STUDENT</span><span>4 / 6</span></div>
+</section>
+
+<section class="page">
+  <div class="topline"><span class="brand">UniHub</span><span class="section-no">Professor and Administrator</span></div>
+  <div class="grid2">
+    <div><div class="role-head"><div class="role-icon">P</div><div><h2 style="margin:0">Professor</h2><p style="margin:0">Own and operate courses</p></div></div></div>
+    <div><div class="role-head"><div class="role-icon">A</div><div><h2 style="margin:0">Administrator</h2><p style="margin:0">Govern users and catalogue</p></div></div></div>
+  </div>
+  <h3>Professor workspace</h3>
+  <ul><li>Create a course with name, description, faculty, department, ECTS credits and capacity.</li><li>View only owned courses in the professor workspace, including total enrolment and published schedule metrics.</li><li>Publish assignments through the course interface with title, description, European date/time and maximum points. The assignment appears immediately and enrolled students receive an internal notification.</li><li>Upload validated PDF materials, define prerequisite courses and publish weekday/time/room schedule entries.</li><li>Inspect the enrolled-student list and send a Mailpit test notification only to students enrolled in the owned course.</li></ul>
+  <h3>Administrator workspace</h3>
+  <ul><li>List user accounts and promote authorised users between Student, Professor and Administrator roles.</li><li>Create and manage courses across the full catalogue, independent of professor ownership.</li><li>Create assignments, schedules, prerequisites and course resources for any course.</li><li>Delete courses while database constraints remove dependent resources safely.</li></ul>
+  <h3>Permission matrix</h3>
+  <table><tr><th>Operation</th><th>Student</th><th>Professor</th><th>Administrator</th></tr><tr><td>Browse courses and details</td><td class="check">Allowed</td><td class="check">Allowed</td><td class="check">Allowed</td></tr><tr><td>Enrol in a course</td><td class="check">Allowed</td><td>Denied</td><td>Denied</td></tr><tr><td>Create a course</td><td>Denied</td><td class="check">Allowed</td><td class="check">Allowed</td></tr><tr><td>Create assignment/material/schedule</td><td>Denied</td><td class="check">Owned course</td><td class="check">Any course</td></tr><tr><td>View enrolled students</td><td>Denied</td><td class="check">Owned course</td><td class="check">Any course</td></tr><tr><td>Change user roles</td><td>Denied</td><td>Denied</td><td class="check">Allowed</td></tr><tr><td>Delete a course</td><td>Denied</td><td>Denied</td><td class="check">Allowed</td></tr></table>
+  <div class="callout"><strong>Defence in depth.</strong> Hiding a button in React improves usability, but it is not security. Every sensitive operation is verified again in the backend service using the current database user, role and course ownership.</div>
+  <div class="footer"><span>Roles: PROFESSOR / ADMIN</span><span>5 / 6</span></div>
+</section>
+
+<section class="page">
+  <div class="topline"><span class="brand">UniHub</span><span class="section-no">Operations, Quality and Extension</span></div>
+  <h2>Notifications, testing and local operation</h2>
+  <h3>Email reminder pipeline</h3>
+  <div class="diagram"><div class="flow"><div class="node">Scheduler<small>every 15 min production<br>every 1 min local</small></div><div class="arrow">&#8594;</div><div class="node">Upcoming assignments<small>deadline within 72 h</small></div><div class="arrow">&#8594;</div><div class="node">Course enrolments<small>student recipients</small></div><div class="arrow">&#8594;</div><div class="node">SMTP / Mailpit<small>message delivery</small></div><div class="arrow">&#8594;</div><div class="node">email_reminders<small>deduplication record</small></div></div></div>
+  <p><strong>Mailpit development mode:</strong> messages are accepted on SMTP port <code>1025</code> and displayed at <code>http://127.0.0.1:8025</code>. They remain local and never reach a real mailbox. Production delivery replaces Mailpit with a verified SMTP provider and environment-based credentials.</p>
+  <h3>Quality and security controls</h3>
+  <div class="grid2">
+    <ul><li>JUnit 5 and Mockito service tests</li><li>H2 repository integration test</li><li>JWT generation/validation test</li><li>Institutional email policy test</li><li>Email sending and deduplication tests</li></ul>
+    <ul><li>10 MB multipart size limit</li><li>PDF MIME, filename and magic-byte validation</li><li>UUID storage names and path normalisation</li><li>DTO validation and consistent HTTP errors</li><li>Flyway migrations and foreign-key constraints</li></ul>
+  </div>
+  <h3>API surface and operational boundaries</h3>
+  <table><tr><th>Area</th><th>Representative endpoint</th><th>Responsibility</th></tr><tr><td>Identity</td><td><code>POST /api/auth/login</code></td><td>Authenticates credentials and returns a signed JWT.</td></tr><tr><td>Catalogue</td><td><code>GET /api/courses</code></td><td>Searches, filters and sorts the academic catalogue.</td></tr><tr><td>Teaching</td><td><code>POST /api/courses/{id}/assignments</code></td><td>Publishes assignments after role and ownership validation.</td></tr><tr><td>Student progress</td><td><code>PUT /api/assignments/{id}/completion</code></td><td>Records per-student completion state.</td></tr><tr><td>Calendar</td><td><code>GET /api/calendar/export.ics</code></td><td>Produces an interoperable academic calendar file.</td></tr><tr><td>Administration</td><td><code>PATCH /api/admin/users/{id}/role</code></td><td>Changes account roles under administrator authority.</td></tr></table>
+  <h3>Deployment model</h3>
+  <div class="grid3"><div class="panel"><strong>Browser client</strong><p>Static React assets can be hosted by a web server or frontend platform and configured through <code>VITE_API_URL</code>.</p></div><div class="panel"><strong>Application service</strong><p>The Spring Boot process remains stateless; horizontal instances can share PostgreSQL and external file storage.</p></div><div class="panel"><strong>Managed services</strong><p>PostgreSQL provides durable data, while object storage and verified SMTP replace local development adapters.</p></div></div>
+  <div class="callout"><strong>Evolution path.</strong> CI can run the existing Maven and TypeScript checks before deployment. Containerisation, object storage and production SMTP are replaceable infrastructure concerns; they do not require changes to the core course, enrolment or assignment model.</div>
+  <div class="footer"><span>UniHub technical documentation</span><span>6 / 6</span></div>
+</section>
+
+</body>
+</html>

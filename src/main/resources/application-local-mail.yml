@@ -1,0 +1,19 @@
+spring:
+  mail:
+    host: 127.0.0.1
+    port: 1025
+    username: ""
+    password: ""
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+            required: false
+
+app:
+  mail:
+    enabled: true
+    from: notifications@unihub.local
+    reminder-schedule: "0 * * * * *"

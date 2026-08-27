@@ -1,0 +1,15 @@
+target/
+.m2/
+.idea/
+.vscode/
+*.iml
+.env
+uploads/
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+tools/mailpit/
+mailpit-data/
+*.log
+*.tmp
+*.pid

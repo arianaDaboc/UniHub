@@ -1,0 +1,47 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/unihub}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+app:
+  mail:
+    enabled: ${MAIL_ENABLED:false}
+    from: ${MAIL_FROM:${MAIL_USERNAME:}}
+    reminder-hours: ${MAIL_REMINDER_HOURS:72}
+    reminder-schedule: ${MAIL_REMINDER_SCHEDULE:0 0/15 * * * *}
+  reviews:
+    minimum-enrollment-days: ${REVIEW_MINIMUM_ENROLLMENT_DAYS:7}
+  storage:
+    uploads-directory: ${UPLOADS_DIRECTORY:uploads}
+  demo:
+    seed-enabled: ${APP_SEED_DEMO_DATA:true}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
+  registration:
+    personal-email-domains: ${PERSONAL_EMAIL_DOMAINS:gmail.com,yahoo.com,yahoo.ro,outlook.com,hotmail.com,live.com,icloud.com,proton.me,protonmail.com,aol.com}
+  jwt:
+    secret: ${JWT_SECRET:change-this-development-secret-key-at-least-32-bytes}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:120}
