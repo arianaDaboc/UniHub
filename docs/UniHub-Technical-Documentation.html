@@ -47,7 +47,7 @@
     <div class="label">Security</div><div><strong>Spring Security + JWT + BCrypt.</strong> Stateless authentication, role authorities, token expiry and endpoint/service ownership checks.</div>
     <div class="label">Persistence</div><div><strong>PostgreSQL + Spring Data JPA + Hibernate.</strong> Entity relationships map to explicit foreign keys and uniqueness constraints.</div>
     <div class="label">Delivery</div><div><strong>Flyway + Maven + JUnit 5 + Mockito + H2.</strong> Repeatable schema evolution and automated backend verification.</div>
-    <div class="label">Email</div><div><strong>Spring Mail + scheduled jobs + Mailpit.</strong> Local SMTP capture for development; configurable SMTP for production delivery.</div>
+    <div class="label">Email</div><div><strong>Spring Mail + scheduled jobs + Mailpit.</strong> Deadline messages are captured in a local inbox without external email accounts or credentials.</div>
   </div>
   <h3>Authenticated GET request</h3>
   <div class="journey">
@@ -135,7 +135,7 @@
   <h2>Notifications, testing and local operation</h2>
   <h3>Email reminder pipeline</h3>
   <div class="diagram"><div class="flow"><div class="node">Scheduler<small>every 15 min production<br>every 1 min local</small></div><div class="arrow">&#8594;</div><div class="node">Upcoming assignments<small>deadline within 72 h</small></div><div class="arrow">&#8594;</div><div class="node">Course enrolments<small>student recipients</small></div><div class="arrow">&#8594;</div><div class="node">SMTP / Mailpit<small>message delivery</small></div><div class="arrow">&#8594;</div><div class="node">email_reminders<small>deduplication record</small></div></div></div>
-  <p><strong>Mailpit development mode:</strong> messages are accepted on SMTP port <code>1025</code> and displayed at <code>http://127.0.0.1:8025</code>. They remain local and never reach a real mailbox. Production delivery replaces Mailpit with a verified SMTP provider and environment-based credentials.</p>
+  <p><strong>Mailpit email mode:</strong> messages are accepted on SMTP port <code>1025</code> and displayed at <code>http://127.0.0.1:8025</code>. They remain inside the local UniHub development environment and require no external email account or password.</p>
   <h3>Quality and security controls</h3>
   <div class="grid2">
     <ul><li>JUnit 5 and Mockito service tests</li><li>H2 repository integration test</li><li>JWT generation/validation test</li><li>Institutional email policy test</li><li>Email sending and deduplication tests</li></ul>
@@ -144,8 +144,8 @@
   <h3>API surface and operational boundaries</h3>
   <table><tr><th>Area</th><th>Representative endpoint</th><th>Responsibility</th></tr><tr><td>Identity</td><td><code>POST /api/auth/login</code></td><td>Authenticates credentials and returns a signed JWT.</td></tr><tr><td>Catalogue</td><td><code>GET /api/courses</code></td><td>Searches, filters and sorts the academic catalogue.</td></tr><tr><td>Teaching</td><td><code>POST /api/courses/{id}/assignments</code></td><td>Publishes assignments after role and ownership validation.</td></tr><tr><td>Student progress</td><td><code>PUT /api/assignments/{id}/completion</code></td><td>Records per-student completion state.</td></tr><tr><td>Calendar</td><td><code>GET /api/calendar/export.ics</code></td><td>Produces an interoperable academic calendar file.</td></tr><tr><td>Administration</td><td><code>PATCH /api/admin/users/{id}/role</code></td><td>Changes account roles under administrator authority.</td></tr></table>
   <h3>Deployment model</h3>
-  <div class="grid3"><div class="panel"><strong>Browser client</strong><p>Static React assets can be hosted by a web server or frontend platform and configured through <code>VITE_API_URL</code>.</p></div><div class="panel"><strong>Application service</strong><p>The Spring Boot process remains stateless; horizontal instances can share PostgreSQL and external file storage.</p></div><div class="panel"><strong>Managed services</strong><p>PostgreSQL provides durable data, while object storage and verified SMTP replace local development adapters.</p></div></div>
-  <div class="callout"><strong>Evolution path.</strong> CI can run the existing Maven and TypeScript checks before deployment. Containerisation, object storage and production SMTP are replaceable infrastructure concerns; they do not require changes to the core course, enrolment or assignment model.</div>
+  <div class="grid3"><div class="panel"><strong>Browser client</strong><p>Static React assets communicate with the API through a typed request layer and role-aware interface.</p></div><div class="panel"><strong>Application service</strong><p>The Spring Boot process remains stateless and keeps business rules inside dedicated services.</p></div><div class="panel"><strong>Local services</strong><p>PostgreSQL provides durable relational data while Mailpit captures scheduled academic reminders.</p></div></div>
+  <div class="callout"><strong>Evolution path.</strong> CI can run the existing Maven and TypeScript checks before deployment. Containerisation and object storage remain optional infrastructure improvements that do not require changes to the core course, enrolment or assignment model.</div>
   <div class="footer"><span>UniHub technical documentation</span><span>6 / 6</span></div>
 </section>
 

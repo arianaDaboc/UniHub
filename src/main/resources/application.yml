@@ -14,22 +14,20 @@ spring:
   flyway:
     enabled: true
   mail:
-    host: ${MAIL_HOST:smtp.gmail.com}
-    port: ${MAIL_PORT:587}
-    username: ${MAIL_USERNAME:}
-    password: ${MAIL_PASSWORD:}
+    host: 127.0.0.1
+    port: 1025
     properties:
       mail:
         smtp:
-          auth: true
+          auth: false
           starttls:
-            enable: true
-            required: true
+            enable: false
+            required: false
 
 app:
   mail:
     enabled: ${MAIL_ENABLED:false}
-    from: ${MAIL_FROM:${MAIL_USERNAME:}}
+    from: notifications@unihub.local
     reminder-hours: ${MAIL_REMINDER_HOURS:72}
     reminder-schedule: ${MAIL_REMINDER_SCHEDULE:0 0/15 * * * *}
   reviews:
