@@ -4,7 +4,7 @@ UniHub is a full-stack academic workspace that centralises courses, assignments,
 
 ## Demo
 
-[Watch the UniHub application demo](unihub_video_compressed.mp4)
+[Watch the UniHub application demo](https://arianadaboc.github.io/UniHub/demo.html)
 
 ## Technology
 
