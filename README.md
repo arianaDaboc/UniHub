@@ -18,8 +18,7 @@ UniHub is a full-stack academic workspace that centralises courses, assignments,
 ## Roles
 
 - **Student:** course enrolment, assignment progress, materials, calendar, schedule, reviews and notifications.
-- **Professor:** course creation, assignments, PDF materials, prerequisites, schedules and enrolled-student management.
-- **Administrator:** user roles and complete academic catalogue management.
+- **Professor / Administrator:** course creation, assignments, PDF materials, prerequisites, schedules, enrolled-student management, user roles and academic catalogue management.
 
 ## Highlights
 
