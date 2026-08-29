@@ -31,7 +31,7 @@ app:
     reminder-hours: ${MAIL_REMINDER_HOURS:72}
     reminder-schedule: ${MAIL_REMINDER_SCHEDULE:0 0/15 * * * *}
   reviews:
-    minimum-enrollment-days: ${REVIEW_MINIMUM_ENROLLMENT_DAYS:7}
+    minimum-enrollment-days: ${REVIEW_MINIMUM_ENROLLMENT_DAYS:0}
   storage:
     uploads-directory: ${UPLOADS_DIRECTORY:uploads}
   demo:
