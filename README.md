@@ -2,6 +2,10 @@
 
 UniHub is a full-stack academic workspace that centralises courses, assignments, deadlines, materials, schedules and notifications.
 
+## Demo
+
+[Watch the UniHub application demo](unihub_video_compressed.mp4)
+
 ## Technology
 
 - React and TypeScript
