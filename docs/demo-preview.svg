@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Watch the UniHub demo video</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1f24"/>
+      <stop offset="1" stop-color="#173a32"/>
+    </linearGradient>
+  </defs>
+  <rect width="880" height="300" rx="18" fill="url(#bg)"/>
+  <g transform="translate(56 64)">
+    <rect width="44" height="44" rx="10" fill="#d9f2e4"/>
+    <path d="M22 12 L38 20 L22 28 L6 20 Z M12 24 V31 C12 34 32 34 32 31 V24" fill="none" stroke="#1f5e4a" stroke-width="3" stroke-linejoin="round"/>
+    <text x="58" y="31" font-size="26" font-weight="700" fill="#ffffff">UniHub</text>
+  </g>
+  <text x="56" y="164" font-size="38" font-weight="700" fill="#ffffff">University life, organised.</text>
+  <text x="56" y="200" font-size="18" fill="#a9c7bc">Courses, assignments, deadlines and schedules in one place</text>
+  <g font-size="14" font-weight="600" fill="#d9f2e4">
+    <rect x="56" y="226" width="78" height="28" rx="14" fill="#24483f"/><text x="95" y="245" text-anchor="middle">React</text>
+    <rect x="142" y="226" width="110" height="28" rx="14" fill="#24483f"/><text x="197" y="245" text-anchor="middle">Spring Boot</text>
+    <rect x="260" y="226" width="110" height="28" rx="14" fill="#24483f"/><text x="315" y="245" text-anchor="middle">PostgreSQL</text>
+    <rect x="378" y="226" width="58" height="28" rx="14" fill="#24483f"/><text x="407" y="245" text-anchor="middle">JWT</text>
+  </g>
+  <g transform="translate(718 150)">
+    <circle r="62" fill="#2f7a5f"/>
+    <circle r="62" fill="none" stroke="#7fd1ad" stroke-opacity="0.35" stroke-width="10"/>
+    <path d="M-18 -30 L-18 30 L32 0 Z" fill="#ffffff"/>
+    <text y="100" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">Watch the demo</text>
+    <text y="122" font-size="14" fill="#a9c7bc" text-anchor="middle">5 min · plays in browser</text>
+  </g>
+</svg>
